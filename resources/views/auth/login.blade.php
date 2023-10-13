@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="{{ asset('dashboard_assets') }}/assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('dashboard_auth_assets') }}/assets/css/style.css">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="{{ asset('dashboard_assets') }}/assets/images/signup-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="{{ asset('dashboard_auth_assets') }}/assets/images/signup-image.jpg" alt="sing up image"></figure>
                         <a href="../index.php" class="signup-image-link">Back To Home</a>
                     </div>
 

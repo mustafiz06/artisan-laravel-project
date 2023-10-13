@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="{{ asset('dashboard_assets') }}/assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('dashboard_auth_assets') }}/assets/css/style.css">
 </head>
 
 <body>
@@ -78,8 +78,8 @@
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src="{{ asset('dashboard_assets') }}/assets/images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">I am already member</a>
+                        <figure><img src="{{ asset('dashboard_auth_assets') }}/assets/images/signup-image.jpg" alt="sing up image"></figure>
+                        <a href="{{ route('login') }}" class="signup-image-link">I am already member</a>
                     </div>
                 </div>
             </div>
