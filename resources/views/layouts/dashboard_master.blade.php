@@ -120,6 +120,14 @@
                             <div data-i18n="Dashboards">Dashboards</div>
                         </a>
                     </li>
+                    <li class="menu-item {{ \Request::route()->getName() == 'category' ? 'active' : '' }}">
+                        <a href="{{ route('category') }}" class="menu-link">
+                            <i class="menu-icon bx bx-category" ></i>
+                            <div data-i18n="category">Category</div>
+                        </a>
+                    </li>
+
+
                     <li class="menu-item {{ \Request::route()->getName() == 'blogs' ? 'active' : '' }}">
                         <a href="{{ route('home') }}" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bxl-blogger"></i>
