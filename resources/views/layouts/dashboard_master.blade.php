@@ -43,6 +43,9 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('dashboard_assets') }}/assets/js/config.js"></script>
+    {{-- sweet alert cdn --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -111,13 +114,13 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboards -->
-                    <li class="menu-item {{ (\Request::route()->getName() == 'home') ? 'active' : '' }}">
+                    <li class="menu-item {{ \Request::route()->getName() == 'home' ? 'active' : '' }}">
                         <a href="{{ route('home') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Dashboards">Dashboards</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ (\Request::route()->getName() == 'blogs') ? 'active' : '' }}">
+                    <li class="menu-item {{ \Request::route()->getName() == 'blogs' ? 'active' : '' }}">
                         <a href="{{ route('home') }}" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bxl-blogger"></i>
                             <div data-i18n="blogs">Blogs</div>
@@ -170,8 +173,8 @@
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ asset('uploads/image/profile') }}/{{ auth()->user()->image }}" alt
-                                            class="w-px-40 h-40 rounded-circle" />
+                                        <img src="{{ asset('uploads/image/profile') }}/{{ auth()->user()->image }}"
+                                            alt class="w-px-40 h-40 rounded-circle" />
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -274,6 +277,8 @@
 
                 <!-- Place this tag in your head or just before your close body tag. -->
                 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+                @yield('footer_script')
 </body>
 
 </html>

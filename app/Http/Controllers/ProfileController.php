@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
@@ -46,6 +47,27 @@ class ProfileController extends Controller
         return back();
     }
 
-    
+    //profile privacy...............
+    public function profile_privacy()
+    {
+        return view('dashboard.profile.privacy');
+    }
 
+    public function profile_password_change(Request $request, $id)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required',
+            // 'password' => 'required|confirmed',
+        ]);
+        if (Hash::check($request->current_password, auth()->user()->password)) {
+            User::find($id)->update([
+                'password' => $request->current_password,
+                'created_at' => now(),
+            ]);
+            return back()->with('update_success', 'Succesfully change the password.');
+        } else {
+            return back()->with('update_error', 'Failed to change the password.');
+        }
+    }
 }
