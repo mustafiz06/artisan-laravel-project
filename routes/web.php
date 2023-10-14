@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::post('/profile/details/update/{id}', [ProfileController::class, 'profile_details_update'])->name('profile.details.update');
+Route::post('/profile/image/update/{id}', [ProfileController::class, 'profile_image_update'])->name('profile.image.update');
+Route::post('/profile/delete/{id}', [ProfileController::class, 'profile_delete'])->name('profile.delete');

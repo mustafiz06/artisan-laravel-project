@@ -12,13 +12,13 @@
                     <div class="d-flex align-items-end row">
                         <div class="col-sm-7">
                             <div class="card-body">
-                                <h5 class="card-title text-primary">Congratulations John! ðŸŽ‰</h5>
+                                <h5 class="card-title text-primary">Congratulation!  {{ auth()->user()->name }}</h5>
                                 <p class="mb-4">
-                                    You have done <span class="fw-medium">72%</span> more sales today. Check your new badge in
-                                    your profile.
+                                    You have  <span class="fw-medium">2</span> new comment today. Check them & reply from
+                                    your profile for grow your account.
                                 </p>
 
-                                <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+                                <a href="javascript:;" class="btn btn-sm btn-outline-primary">{{ auth()->user()->role }}</a>
                             </div>
                         </div>
                         <div class="col-sm-5 text-center text-sm-left">
@@ -48,9 +48,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <span class="fw-medium d-block mb-1">Profit</span>
-                                <h3 class="card-title mb-2">$12,628</h3>
-                                <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
+                                <span class="fw-medium d-block mb-1">Total Post</span>
+                                <h3 class="card-title mb-2">12,628</h3>
+                                {{-- <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> --}}
                             </div>
                         </div>
                     </div>
@@ -71,9 +71,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <span>Sales</span>
-                                <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                                <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                                <span>Popular Post</span>
+                                <h3 class="card-title text-nowrap mb-1">679</h3>
+                                {{-- <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +28.42%</small> --}}
                             </div>
                         </div>
                     </div>
