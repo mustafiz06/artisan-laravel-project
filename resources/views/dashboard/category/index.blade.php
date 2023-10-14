@@ -13,8 +13,51 @@
                 <span class="text-muted fw-light">Dashboard /</span> Category
             </h4>
             <div class="row">
-                <div class="col-7"></div>
-                <div class="col-md-5">
+                <div class="col-8">
+                    <div class="card">
+                        <h5 class="card-header">Category list</h5>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Image</th>
+                                        <th>Title</th>
+                                        <th>Slug</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0">
+                                    @foreach ($categories as $category)
+                                        <tr>
+                                            <td>1</td>
+                                            <td> <img src="{{ asset('uploads/image/category') }}/{{ $category->image }}" alt="category image" class="rounded" style="height:40px; width:40px;" /></td>
+                                            <td>{{ $category->title }}</td>
+                                            <td>{{ $category->slug }}</td>
+                                            <td><span class="badge bg-label-primary me-1">{{ $category->status }}</span></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                        <form action="{{ route('category.delete', $category->id) }}" method="post">
+                                                            @csrf
+                                                            <button class="dropdown-item btn btn-danger my-1"><i class="bx bx-trash me-1"></i> Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
                     <div class="card mb-4">
                         <h5 class="card-header">Insert Category name</h5>
                         <div class="card-body">
@@ -77,6 +120,16 @@
                 icon: 'success',
                 title: 'Congrats',
                 text: '{{ session('category_insert_success') }}',
+                showConfirmButton: false,
+                timer: 1000
+            })
+        </script>
+    @endif
+    @if (session('category_delete_success'))
+        <script>
+            const Toast = Swal.fire({
+                icon: 'success',
+                text: '{{ session('category_delete_success') }}',
                 showConfirmButton: false,
                 timer: 1000
             })

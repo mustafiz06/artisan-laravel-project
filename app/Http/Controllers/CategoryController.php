@@ -11,7 +11,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('dashboard.category.index');
+        $categories = Category::all();
+        return view('dashboard.category.index', compact('categories'));
     }
     public function category_insert(Request $request)
     {
@@ -41,6 +42,11 @@ class CategoryController extends Controller
                 ]);
             }
         }
-        return back()->with('category_insert_success','New Category insert successfully.');
+        return back()->with('category_insert_success', 'New Category insert successfully.');
+    }
+    public function category_delete($id)
+    {
+        Category::find($id)->delete();
+        return back()->with('category_delete_success', 'Category deleted successfully.');
     }
 }
