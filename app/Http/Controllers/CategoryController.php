@@ -49,4 +49,31 @@ class CategoryController extends Controller
         Category::find($id)->delete();
         return back()->with('category_delete_success', 'Category deleted successfully.');
     }
+
+    public function status_change($id)
+    {
+        $category = Category::where('id', $id)->first();
+
+        if ($category->status == 'active') {
+            $category = Category::find($id);
+            $category->status = 'deactive';
+            $category->created_at = now();
+            $category->save();
+            return back()->with('status_change', 'Status Change successfully.');
+        } else {
+            $category = Category::find($id);
+            $category->status = 'active';
+            $category->created_at = now();
+            $category->save();
+            return back()->with('status_change', 'Status Change successfully.');
+        }
+    }
+
+
+
+    public function category_edit(Request $request, $id)
+    {
+
+        return back()->with('category_edit_success', 'Category update successfully.');
+    }
 }

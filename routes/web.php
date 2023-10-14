@@ -37,3 +37,5 @@ Route::post('/profile/privacy/password/change/{id}', [ProfileController::class, 
 Route::get('/category', [CategoryController::class, 'index'])->name('category');
 Route::post('/category/insert', [CategoryController::class, 'category_insert'])->name('category.insert');
 Route::post('/category/delete/{id}', [CategoryController::class, 'category_delete'])->name('category.delete');
+Route::post('/category/edit/{id}', [CategoryController::class, 'category_edit'])->name('category.edit');
+Route::post('/category/status/change/{id}', [CategoryController::class, 'status_change'])->name('category.status.change');
