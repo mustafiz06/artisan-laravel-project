@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         return view('dashboard.category.index', compact('categories'));
     }
     public function category_insert(Request $request)
@@ -73,7 +73,45 @@ class CategoryController extends Controller
 
     public function category_edit(Request $request, $id)
     {
+        $category = Category::where('id', $id)->first();
 
-        return back()->with('category_edit_success', 'Category update successfully.');
+        if ($request->hasFile('image')) {
+            // unlink(public_path('uploads/image/category/'. $category->image));
+            $new_name = $request->category_title . '.' . $request->file('image')->getClientOriginalExtension();
+            $img = Image::make($request->file('image'))->resize(300, 200);
+            $img->save(base_path('public/uploads/image/category/' . $new_name), 60);
+
+            if ($request->category_slug) {
+                Category::find($id)->update([
+                    'title' => $request->category_title,
+                    'slug' => Str::slug($request->category_slug),
+                    'image' => $new_name,
+                    'created_at' => now(),
+                ]);
+            } else {
+                Category::find($id)->update([
+                    'title' => $request->category_title,
+                    'slug' => Str::slug($request->category_title),
+                    'image' => $new_name,
+                    'created_at' => now(),
+                ]);
+            }
+            return back()->with('category_edit_success', 'Category update successfully.');
+        } else {
+            if ($request->category_slug) {
+                Category::find($id)->update([
+                    'title' => $request->category_title,
+                    'slug' => Str::slug($request->category_slug),
+                    'created_at' => now(),
+                ]);
+            } else {
+                Category::find($id)->update([
+                    'title' => $request->category_title,
+                    'slug' => Str::slug($request->category_title),
+                    'created_at' => now(),
+                ]);
+            }
+            return back()->with('category_edit_success', 'Category update successfully.');
+        }
     }
 }

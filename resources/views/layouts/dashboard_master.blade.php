@@ -126,6 +126,12 @@
                             <div data-i18n="category">Category</div>
                         </a>
                     </li>
+                    <li class="menu-item {{ \Request::route()->getName() == 'tag' ? 'active' : '' }}">
+                        <a href="{{ route('tag') }}" class="menu-link">
+                            <i class="menu-icon bx bx-tag" ></i>
+                            <div data-i18n="category">Tag</div>
+                        </a>
+                    </li>
 
 
                     <li class="menu-item {{ \Request::route()->getName() == 'blogs' ? 'active' : '' }}">

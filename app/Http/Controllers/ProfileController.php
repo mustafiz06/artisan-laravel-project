@@ -62,7 +62,7 @@ class ProfileController extends Controller
         ]);
         if (Hash::check($request->current_password, auth()->user()->password)) {
             User::find($id)->update([
-                'password' => $request->current_password,
+                'password' => $request->password,
                 'created_at' => now(),
             ]);
             return back()->with('update_success', 'Succesfully change the password.');

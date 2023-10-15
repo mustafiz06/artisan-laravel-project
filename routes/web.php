@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -39,3 +40,14 @@ Route::post('/category/insert', [CategoryController::class, 'category_insert'])-
 Route::post('/category/delete/{id}', [CategoryController::class, 'category_delete'])->name('category.delete');
 Route::post('/category/edit/{id}', [CategoryController::class, 'category_edit'])->name('category.edit');
 Route::post('/category/status/change/{id}', [CategoryController::class, 'status_change'])->name('category.status.change');
+
+
+
+
+Route::get('/tag', [TagController::class, 'index'])->name('tag');
+Route::post('/tag/insert', [TagController::class, 'tag_insert'])->name('tag.insert');
+Route::post('/tag/delete/{id}', [TagController::class, 'tag_delete'])->name('tag.delete');
+Route::post('/tag/edit/{id}', [TagController::class, 'tag_edit'])->name('tag.edit');
+Route::post('/tag/status/change/{id}', [TagController::class, 'status_change'])->name('tag.status.change');
+
+
