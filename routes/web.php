@@ -49,5 +49,7 @@ Route::post('/tag/insert', [TagController::class, 'tag_insert'])->name('tag.inse
 Route::post('/tag/delete/{id}', [TagController::class, 'tag_delete'])->name('tag.delete');
 Route::post('/tag/edit/{id}', [TagController::class, 'tag_edit'])->name('tag.edit');
 Route::post('/tag/status/change/{id}', [TagController::class, 'status_change'])->name('tag.status.change');
+Route::post('/tag/restore/{id}', [TagController::class, 'tag_restore'])->name('tag.restore');
+Route::post('/tag/forcedelete/{id}', [TagController::class, 'tag_forcedelete'])->name('tag.forcedelete');
 
 

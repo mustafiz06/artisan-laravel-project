@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('status')->default('deactive');
             $table->timestamps();
+            $table->SoftDeletes();
         });
     }
 

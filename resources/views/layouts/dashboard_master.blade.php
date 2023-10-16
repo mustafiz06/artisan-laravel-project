@@ -122,13 +122,13 @@
                     </li>
                     <li class="menu-item {{ \Request::route()->getName() == 'category' ? 'active' : '' }}">
                         <a href="{{ route('category') }}" class="menu-link">
-                            <i class="menu-icon bx bx-category" ></i>
+                            <i class="menu-icon bx bx-category"></i>
                             <div data-i18n="category">Category</div>
                         </a>
                     </li>
                     <li class="menu-item {{ \Request::route()->getName() == 'tag' ? 'active' : '' }}">
                         <a href="{{ route('tag') }}" class="menu-link">
-                            <i class="menu-icon bx bx-tag" ></i>
+                            <i class="menu-icon bx bx-tag"></i>
                             <div data-i18n="category">Tag</div>
                         </a>
                     </li>
@@ -140,15 +140,16 @@
                             <div data-i18n="blogs">Blogs</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item">
+                            <li class="menu-item {{ \Request::route()->getName() == 'blogs' ? 'active' : '' }}">
                                 <a href="blog.html" class="menu-link">
-                                    <div data-i18n="CRM">CRM</div>
-                                    <!-- <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div> -->
+                                    <div data-i18n="CRM">Blogs</div>
+                                    <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">5</div>
                                 </a>
                             </li>
-                            <li class="menu-item active">
+                            <li class="menu-item {{ \Request::route()->getName() == 'add.blogs' ? 'active' : '' }}">
                                 <a href="index.html" class="menu-link">
-                                    <div data-i18n="Analytics">Analytics</div>
+                                    <div data-i18n="Analytics">Add Blog</div>
+                                    <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto"><i class='bx bx-plus'></i></div>
                                 </a>
                             </li>
                         </ul>

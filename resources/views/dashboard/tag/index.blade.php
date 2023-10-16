@@ -15,7 +15,13 @@
             <div class="row">
                 <div class="col-8">
                     <div class="card">
-                        <h5 class="card-header">tag list</h5>
+                        <h5 class="card-header d-flex justify-content-between">
+                            <div>Tag list</div>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#modalLong"data-id="">
+                                <i class="bx bx-trash-alt me-1"></i> Trash
+                            </button>
+                        </h5>
                         <div class="table-responsive text-nowrap">
                             <table class="table mb-3">
                                 <thead>
@@ -51,7 +57,8 @@
 
                                                 <form action="{{ route('tag.delete', $tag->id) }}" method="post">
                                                     @csrf
-                                                    <button class="btn btn-danger me-1 mx-2"><i class="bx bx-trash me-1"></i>
+                                                    <button class="btn btn-danger me-1 mx-2"><i
+                                                            class="bx bx-trash me-1"></i>
                                                         Delete</button>
                                                 </form>
                                             </td>
@@ -124,18 +131,94 @@
                                 <div>
                                     <button type="submit" class="btn btn-primary me-2 my-3">Insert</button>
                                 </div>
-
-
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <h5 class="card-header">Trashes</h5>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table mb-3">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach ($trashes as $trash)
+                                    <tr>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $trash->title }}</td>
+                                        <td class="d-flex">
+                                            <form action="{{ route('tag.restore', $trash->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success mx-2"><i
+                                                        class="bx bx-restore me-1"></i>
+                                                    Restore</button>
+                                            </form>
+                                            <form action="{{ route('tag.forcedelete', $trash->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger mx-2"><i
+                                                        class="bx bx-delete me-1"></i>
+                                                    Delete</button>
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     </div>
+    {{-- .........................trash modal.............. --}}
+
+    <div class="modal fade" id="modalLong" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="">
+            <div class="card">
+                <h5 class="card-header">Trashes</h5>
+                <div class="table-responsive text-nowrap">
+                    <table class="table mb-3">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach ($trashes as $trash)
+                                <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $trash->title }}</td>
+                                    <td class="d-flex">
+                                        <form action="{{ route('tag.restore', $trash->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success mx-2"><i
+                                                    class="bx bx-restore me-1"></i>
+                                                Restore</button>
+                                        </form>
+                                        <button class="btn btn-danger mx-2"><i
+                                                class="bx bx-trash me-1"></i>Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{-- <span class="block text-center my-4">{{ $tags->links() }}</span> --}}
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection()
-{{-- @section('footer_script')
+@section('footer_script')
     @if (session('tag_insert_success'))
         <script>
             const Toast = Swal.fire({
@@ -157,14 +240,25 @@
             })
         </script>
     @endif
-    @if (session('status_change'))
+    @if (session('tag_restore_success'))
         <script>
             const Toast = Swal.fire({
                 icon: 'success',
-                text: '{{ session('status_change') }}',
+                text: '{{ session('tag_restore_success') }}',
                 showConfirmButton: false,
                 timer: 500
             })
         </script>
     @endif
-@endsection --}}
+    @if (session('tag_forcedelete_success'))
+        <script>
+            const Toast = Swal.fire({
+                icon: 'success',
+                text: '{{ session('tag_forcedelete_success') }}',
+                showConfirmButton: false,
+                timer: 500
+            })
+        </script>
+    @endif
+
+@endsection

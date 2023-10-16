@@ -10,7 +10,8 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::paginate(5);
-        return view('dashboard.tag.index', compact('tags'));
+        $trashes = Tag::onlyTrashed()->get();
+        return view('dashboard.tag.index', compact('tags','trashes'));
     }
 
     public function tag_insert(Request $request)
@@ -53,8 +54,6 @@ class TagController extends Controller
         }
     }
 
-
-
     public function tag_edit(Request $request, $id)
     {
 
@@ -64,5 +63,20 @@ class TagController extends Controller
         ]);
 
         return back()->with('tag_edit_success', 'tag update successfully.');
+    }
+
+    public function tag_restore($id)
+    {
+        // tag::withTrashed()->where('id', $id)->restore();
+        tag::onlyTrashed()->where('id', $id)->restore();
+
+        return back()->with('tag_restore_success', 'tag restore successfully.');
+    }
+    public function tag_forcedelete($id)
+    {
+        // tag::$user->forceDelete();
+        tag::onlyTrashed()->where('id', $id)->forceDelete();
+
+        return back()->with('tag_forcedelete_success', 'tag delete parmanently.');
     }
 }
