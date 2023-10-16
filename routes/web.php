@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
@@ -51,5 +52,18 @@ Route::post('/tag/edit/{id}', [TagController::class, 'tag_edit'])->name('tag.edi
 Route::post('/tag/status/change/{id}', [TagController::class, 'status_change'])->name('tag.status.change');
 Route::post('/tag/restore/{id}', [TagController::class, 'tag_restore'])->name('tag.restore');
 Route::post('/tag/forcedelete/{id}', [TagController::class, 'tag_forcedelete'])->name('tag.forcedelete');
+
+
+
+// add blog
+Route::get('/blog/add', [BlogController::class, 'blog_add'])->name('blog.add');
+Route::post('/blog/add/post', [BlogController::class, 'blog_add_post'])->name('blog.post');
+// edit blog
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::post('/blog/delete/{id}', [BlogController::class, 'blog_delete'])->name('blog.delete');
+Route::post('/blog/status/change/{id}', [BlogController::class, 'blog_status_change'])->name('blog.status.change');
+Route::get('/blog/trash', [BlogController::class, 'blog_trash'])->name('blog.trash');
+Route::post('/blog/restore/{id}', [BlogController::class, 'blog_restore'])->name('blog.restore');
+Route::post('/blog/delete/forever/{id}', [BlogController::class, 'blog_forcedelete'])->name('blog.forcedelete');
 
 

@@ -46,6 +46,13 @@
     {{-- sweet alert cdn --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    {{-- summernote --}}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 </head>
 
 <body>
@@ -134,24 +141,33 @@
                     </li>
 
 
-                    <li class="menu-item {{ \Request::route()->getName() == 'blogs' ? 'active' : '' }}">
-                        <a href="{{ route('home') }}" class="menu-link menu-toggle">
+                    <li class="menu-item {{ \Request::route()->getName() == 'blog' ? 'active' : '' }}">
+                        <a href="{{ route('blog') }}" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bxl-blogger"></i>
                             <div data-i18n="blogs">Blogs</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item {{ \Request::route()->getName() == 'blogs' ? 'active' : '' }}">
-                                <a href="blog.html" class="menu-link">
+                            <li class="menu-item {{ \Request::route()->getName() == 'blog' ? 'active' : '' }}">
+                                <a href="{{ route('blog') }}" class="menu-link">
                                     <div data-i18n="CRM">Blogs</div>
                                     <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">5</div>
                                 </a>
                             </li>
-                            <li class="menu-item {{ \Request::route()->getName() == 'add.blogs' ? 'active' : '' }}">
-                                <a href="index.html" class="menu-link">
+                            <li class="menu-item {{ \Request::route()->getName() == 'blog.add' ? 'active' : '' }}">
+                                <a href="{{ route('blog.add') }}" class="menu-link">
                                     <div data-i18n="Analytics">Add Blog</div>
-                                    <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto"><i class='bx bx-plus'></i></div>
+                                    <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto"><i
+                                            class='bx bx-plus'></i></div>
                                 </a>
                             </li>
+                            <li class="menu-item {{ \Request::route()->getName() == 'blog.trash' ? 'active' : '' }}">
+                                <a href="{{ route('blog.trash') }}" class="menu-link">
+                                    <div data-i18n="Analytics">Trash</div>
+                                    <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto"><i
+                                            class='bx bx-trash'></i></div>
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
                 </ul>
@@ -273,7 +289,7 @@
                 <!-- Core JS -->
                 <!-- build:js assets/vendor/js/core.js -->
 
-                <script src="{{ asset('dashboard_assets') }}/assets/vendor/libs/jquery/jquery.js"></script>
+                {{-- <script src="{{ asset('dashboard_assets') }}/assets/vendor/libs/jquery/jquery.js"></script> --}}
                 <script src="{{ asset('dashboard_assets') }}/assets/vendor/libs/popper/popper.js"></script>
                 <script src="{{ asset('dashboard_assets') }}/assets/vendor/js/bootstrap.js"></script>
                 <script src="{{ asset('dashboard_assets') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
@@ -293,6 +309,12 @@
                 <!-- Place this tag in your head or just before your close body tag. -->
                 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
+                {{-- summer note script  --}}
+                <script>
+                    $(document).ready(function() {
+                        $('#summernote').summernote();
+                    });
+                </script>
                 @yield('footer_script')
 </body>
 
