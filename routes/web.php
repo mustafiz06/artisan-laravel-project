@@ -19,9 +19,11 @@ use Intervention\Image\Facades\Image;
 |
 */
 
-Route::get('/', function () {
+Route::get('/a', function () {
     return view('welcome');
 });
+
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('root');
 
 Auth::routes();
 
