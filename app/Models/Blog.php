@@ -18,4 +18,9 @@ class Blog extends Model
         // return $this->hasOne(Category::class,'id','category_id');
         return $this->belongsTo(Category::class,'category_id','id');
     }
+
+
+    public function ManyRelationwithTags(){
+        return $this->belongsToMany(tag::class);
+    }
 }

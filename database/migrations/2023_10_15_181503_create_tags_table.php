@@ -18,6 +18,10 @@ return new class extends Migration
             $table->timestamps();
             $table->SoftDeletes();
         });
+        Schema::create('blog_tag', function (Blueprint $table) {
+            $table->integer('blog_id');
+            $table->integer('tag_id');
+        });
     }
 
     /**
@@ -26,5 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tags');
+        Schema::dropIfExists('blog_id');
     }
 };

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\tag;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -18,8 +19,9 @@ class BlogController extends Controller
     // add blog ....................
     public function blog_add()
     {
-        $categories = Category::paginate(5);
-        return view('dashboard.blog.add_blog', compact('categories'));
+        $categories = Category::all();
+        $tags = tag::all();
+        return view('dashboard.blog.add_blog', compact('categories', 'tags'));
     }
     public function blog_add_post(Request $request)
     {
@@ -35,7 +37,7 @@ class BlogController extends Controller
         $img->save(base_path('public/uploads/image/blogs/' . $new_name), 60);
 
         if ($request->hasFile('image')) {
-            Blog::insert([
+           $blog = Blog::create([
                 'user_id' => auth()->id(),
                 'category_id' => $request->category,
                 'title' => $request->title,
@@ -44,7 +46,8 @@ class BlogController extends Controller
                 'image' => $new_name,
                 'created_at' => now(),
             ]);
-
+            $blog->ManyRelationwithTags()->attach($request->tag_id);
+            $blog->save();
             return back()->with('blog_insert_success', 'New blog insert successfully.');
         } else {
             return back()->with('blog_insert_error', 'New blog insert error.');

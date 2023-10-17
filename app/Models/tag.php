@@ -11,4 +11,8 @@ class tag extends Model
     protected $guarded = [' '];
     use HasFactory;
     use SoftDeletes;
+
+    public function ManyRelationwithBlog(){
+        return $this->belongsToMany(Blog::class);
+    }
 }

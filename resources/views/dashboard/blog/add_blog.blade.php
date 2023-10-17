@@ -49,12 +49,25 @@
                                     @enderror
                                 </div>
                                 <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Tag</label>
+                                    <div class="col-sm-10">
+                                        @foreach ($tags as $tag)
+                                            <input type="checkbox" class="form-check-input" name="tag_id[]" id="basic-default-tag{{ $tag->id}}" value="{{ $tag->id }}">
+                                            <label class="form-check-label" for="basic-default-tag{{ $tag->id}}"> {{ $tag->title }} </label> <br>
+                                        @endforeach
+                                    </div>
+                                    @error('category')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-date">Date</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
                                             <input type="text" id="basic-default-date"
-                                                class="form-control @error('date') is-invalid @enderror"
-                                                name="date" />
+                                                class="form-control @error('date') is-invalid @enderror" name="date" />
                                         </div>
                                         @error('date')
                                             <span class="invalid-feedback" role="alert">
