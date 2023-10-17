@@ -11,7 +11,8 @@ class FrontendController extends Controller
     public function index()
     {
         $feature_blogs=Blog::latest()->take(3)->get();
-        $categories = Category::all();
+        $categories = Category::all()->take(4);
         return view('frontend.index.index', compact('feature_blogs','categories'));
     }
+
 }

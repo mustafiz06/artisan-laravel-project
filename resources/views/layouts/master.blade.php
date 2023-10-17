@@ -34,18 +34,21 @@
                     <div class="bg-primary text-white text-center py-2" style="width: 100px;">Tranding</div>
                     <div class="owl-carousel owl-carousel-1 tranding-carousel position-relative d-inline-flex align-items-center ml-3"
                         style="width: calc(100% - 100px); padding-left: 90px;">
-                        <div class="text-truncate"><a class="text-secondary" href="">Labore sit justo amet eos
-                                sed, et sanctus dolor diam eos</a></div>
-                        <div class="text-truncate"><a class="text-secondary" href="">Gubergren elitr amet eirmod
-                                et lorem diam elitr, ut est erat Gubergren elitr amet eirmod et lorem diam elitr, ut est
-                                erat</a></div>
+                        {{-- <div class="text-truncate"><a class="text-secondary" href="">Labore sit justo amet eos
+                                sed, et sanctus dolor diam eos</a></div> --}}
+                        <marquee behavior="" direction="">
+                            <a class="text-secondary" href="">দুঃসংবাদ দিলেন আরিফিন শুভ</a>
+                        </marquee>
+
                     </div>
                 </div>
             </div>
             <div class="col-md-4 text-right d-none d-md-block">
-                Monday, January 01, 2045
+                {{ Carbon\Carbon::now('Asia/Dhaka')->format('D, M d, Y') }}
             </div>
         </div>
+
+        {{-- add space & site name start --}}
         <div class="row align-items-center py-2 px-lg-5">
             <div class="col-lg-4">
                 <a href="" class="navbar-brand d-none d-lg-block">
@@ -53,9 +56,11 @@
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">
-                <img class="img-fluid" src="{{ asset('forntend_assets') }}/img/ads-700x70.jpg" alt="">
+                {{-- <img class="img-fluid" src="{{ asset('forntend_assets') }}/img/ads-700x70.jpg" alt=""> --}}
             </div>
         </div>
+        {{-- add space & site name end --}}
+
     </div>
     <!-- Topbar End -->
 
@@ -106,26 +111,32 @@
                 <h3 class="m-0">Follow Us</h3>
             </div>
             <div class="d-flex mb-3">
-                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #39569E;">
+                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2"
+                    style="background: #39569E;">
                     <small class="fab fa-facebook-f mr-2"></small><small>12,345 Fans</small>
                 </a>
-                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #52AAF4;">
+                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2"
+                    style="background: #52AAF4;">
                     <small class="fab fa-twitter mr-2"></small><small>12,345 Followers</small>
                 </a>
             </div>
             <div class="d-flex mb-3">
-                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #0185AE;">
+                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2"
+                    style="background: #0185AE;">
                     <small class="fab fa-linkedin-in mr-2"></small><small>12,345 Connects</small>
                 </a>
-                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #C8359D;">
+                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2"
+                    style="background: #C8359D;">
                     <small class="fab fa-instagram mr-2"></small><small>12,345 Followers</small>
                 </a>
             </div>
             <div class="d-flex mb-3">
-                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #DC472E;">
+                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2"
+                    style="background: #DC472E;">
                     <small class="fab fa-youtube mr-2"></small><small>12,345 Subscribers</small>
                 </a>
-                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #1AB7EA;">
+                <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2"
+                    style="background: #1AB7EA;">
                     <small class="fab fa-vimeo-v mr-2"></small><small>12,345 Followers</small>
                 </a>
             </div>
@@ -152,7 +163,8 @@
 
         <!-- Ads Start -->
         <div class="mb-3 pb-3">
-            <a href=""><img class="img-fluid" src="{{ asset('forntend_assets') }}/img/news-500x280-4.jpg" alt=""></a>
+            <a href=""><img class="img-fluid" src="{{ asset('forntend_assets') }}/img/news-500x280-4.jpg"
+                    alt=""></a>
         </div>
         <!-- Ads End -->
 
@@ -162,7 +174,8 @@
                 <h3 class="m-0">Tranding</h3>
             </div>
             <div class="d-flex mb-3">
-                <img src="{{ asset('forntend_assets') }}/img/news-100x100-1.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="{{ asset('forntend_assets') }}/img/news-100x100-1.jpg"
+                    style="width: 100px; height: 100px; object-fit: cover;">
                 <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                     <div class="mb-1" style="font-size: 13px;">
                         <a href="">Technology</a>
@@ -173,7 +186,8 @@
                 </div>
             </div>
             <div class="d-flex mb-3">
-                <img src="{{ asset('forntend_assets') }}/img/news-100x100-2.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="{{ asset('forntend_assets') }}/img/news-100x100-2.jpg"
+                    style="width: 100px; height: 100px; object-fit: cover;">
                 <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                     <div class="mb-1" style="font-size: 13px;">
                         <a href="">Technology</a>
@@ -184,7 +198,8 @@
                 </div>
             </div>
             <div class="d-flex mb-3">
-                <img src="{{ asset('forntend_assets') }}/img/news-100x100-3.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="{{ asset('forntend_assets') }}/img/news-100x100-3.jpg"
+                    style="width: 100px; height: 100px; object-fit: cover;">
                 <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                     <div class="mb-1" style="font-size: 13px;">
                         <a href="">Technology</a>
@@ -195,7 +210,8 @@
                 </div>
             </div>
             <div class="d-flex mb-3">
-                <img src="{{ asset('forntend_assets') }}/img/news-100x100-4.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="{{ asset('forntend_assets') }}/img/news-100x100-4.jpg"
+                    style="width: 100px; height: 100px; object-fit: cover;">
                 <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                     <div class="mb-1" style="font-size: 13px;">
                         <a href="">Technology</a>
@@ -206,7 +222,8 @@
                 </div>
             </div>
             <div class="d-flex mb-3">
-                <img src="{{ asset('forntend_assets') }}/img/news-100x100-5.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="{{ asset('forntend_assets') }}/img/news-100x100-5.jpg"
+                    style="width: 100px; height: 100px; object-fit: cover;">
                 <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                     <div class="mb-1" style="font-size: 13px;">
                         <a href="">Technology</a>
@@ -241,11 +258,11 @@
         </div>
         <!-- Tags End -->
     </div>
-</div>
-</div>
-</div>
-</div>
-<!-- News With Sidebar End -->
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- News With Sidebar End -->
     <!-- Footer Start -->
     <div class="container-fluid bg-light pt-5 px-sm-3 px-md-5">
         <div class="row">

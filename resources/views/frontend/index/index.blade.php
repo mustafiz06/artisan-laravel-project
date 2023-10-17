@@ -50,7 +50,7 @@
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                         <h3 class="m-0">Categories</h3>
-                        <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+                        <a class="text-secondary font-weight-medium text-decoration-none" href=" ">View All</a>
                     </div>
 
                 @foreach ($categories as $category)
@@ -59,7 +59,7 @@
                             style="object-fit: cover;">
                         <a href=""
                             class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            Business
+                            {{ $category->title }}
                         </a>
                     </div>
                     @endforeach
@@ -71,7 +71,7 @@
 
 
     <!-- Featured News Slider Start -->
-    <div class="container-fluid py-3">
+    {{-- <div class="container-fluid py-3">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                 <h3 class="m-0">Featured</h3>
@@ -141,7 +141,7 @@
             </div>
         </div>
     </div>
-    </div>
+    </div> --}}
     <!-- Featured News Slider End -->
 
 
