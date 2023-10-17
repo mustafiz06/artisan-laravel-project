@@ -11,4 +11,11 @@ class Blog extends Model
     protected $guarded = [' '];
     use HasFactory;
     use SoftDeletes;
+    public function RelationwithUser(){
+        return $this->hasOne(User::class,'id','user_id');
+    }
+    public function RelationwithCategoty(){
+        // return $this->hasOne(Category::class,'id','category_id');
+        return $this->belongsTo(Category::class,'category_id','id');
+    }
 }

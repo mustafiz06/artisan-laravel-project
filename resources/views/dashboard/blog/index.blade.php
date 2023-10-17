@@ -22,6 +22,8 @@
                                     <th>Image</th>
                                     <th>Title</th>
                                     <th>Details</th>
+                                    <th>Category</th>
+                                    <th>Author</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -35,7 +37,9 @@
                                             alt="tutor image 1" />
                                         </td>
                                         <td>{{ $blog->title }}</td>
-                                        <td style="">{{ $blog->details }}</td>
+                                        <td>{{ $blog->details }}</td>
+                                        <td>{{ $blog->RelationwithCategoty->title }}</td>
+                                        <td>{{ $blog->RelationwithUser->name }}</td>
                                         <td>
                                             <form action="{{ route('blog.status.change', $blog->id) }}" method="post">
                                                 @csrf
