@@ -52,16 +52,18 @@
                                                 @endif
                                             </form>
                                         </td>
-                                        <td class="d-flex">
-                                            <button type="button" class="btn btn-primary">
-                                                <i class="bx bx-edit-alt me-1"></i> </button>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <button type="button" class="btn btn-primary">
+                                                    <i class="bx bx-edit-alt me-1"></i> </button>
 
-                                            <form action="{{ route('blog.delete', $blog->id) }}" method="post">
-                                                @csrf
-                                                <button class="btn btn-danger me-1 mx-2"><i
-                                                        class="bx bx-trash me-1"></i>
-                                                    </button>
-                                            </form>
+                                                <form action="{{ route('blog.delete', $blog->id) }}" method="post">
+                                                    @csrf
+                                                    <button class="btn btn-danger me-1 mx-2"><i
+                                                            class="bx bx-trash me-1"></i>
+                                                        </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
