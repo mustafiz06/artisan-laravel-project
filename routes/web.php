@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleManagementController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,15 @@ Route::get('/a', function () {
 
 Route::get('/', [FrontendController::class, 'index'])->name('root');
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+]);
+
+Route::get('/dashboard/manage/role', [RoleManagementController::class, 'index'])->name('role');
+Route::get('/dashboard/add/user', [RoleManagementController::class, 'add_user'])->name('add.user');
+Route::post('/dashboard/administration/change', [RoleManagementController::class, 'administration_role_edit'])->name('administration.role.edit');
+
+
 
 Route::get('/dashboard/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

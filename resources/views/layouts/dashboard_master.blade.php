@@ -127,6 +127,15 @@
                             <div data-i18n="Dashboards">Dashboards</div>
                         </a>
                     </li>
+
+                    @if (auth()->user()->role != 'visitor')
+                        <li class="menu-item {{ \Request::route()->getName() == 'role' ? 'active' : '' }}">
+                            <a href="{{ route('role') }}" class="menu-link">
+                                <i class="menu-icon bx bx-key"></i>
+                                <div data-i18n="role">Manage Role</div>
+                            </a>
+                        </li>
+                    @endif
                     <li class="menu-item {{ \Request::route()->getName() == 'category' ? 'active' : '' }}">
                         <a href="{{ route('category') }}" class="menu-link">
                             <i class="menu-icon bx bx-category"></i>
@@ -136,7 +145,7 @@
                     <li class="menu-item {{ \Request::route()->getName() == 'tag' ? 'active' : '' }}">
                         <a href="{{ route('tag') }}" class="menu-link">
                             <i class="menu-icon bx bx-tag"></i>
-                            <div data-i18n="category">Tag</div>
+                            <div data-i18n="tag">Tag</div>
                         </a>
                     </li>
 
