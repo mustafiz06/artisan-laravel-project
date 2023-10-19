@@ -32,7 +32,7 @@ Auth::routes([
 ]);
 
 Route::get('/dashboard/manage/role', [RoleManagementController::class, 'index'])->name('role');
-Route::get('/dashboard/add/user', [RoleManagementController::class, 'add_user'])->name('add.user');
+Route::post('/dashboard/add/user', [RoleManagementController::class, 'add_user'])->name('add.user');
 Route::post('/dashboard/administration/change', [RoleManagementController::class, 'administration_role_edit'])->name('administration.role.edit');
 
 

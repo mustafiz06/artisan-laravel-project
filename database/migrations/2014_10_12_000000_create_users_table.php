@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image')->default('default_profile.png');
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
-            $table->string('role')->default('writer');
+            $table->string('role')->default('visitor');
             $table->rememberToken();
             $table->timestamps();
         });

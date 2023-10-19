@@ -17,8 +17,9 @@
                             <div class="card">
                                 <h5 class="card-header d-flex justify-content-between">
                                     <div>User list</div>
-                                    <a class="btn btn-success" href=""><i class="bx bx-plus me-1"></i> Add New
-                                        User</a>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#modalLong" data-id="">
+                                        <i class="bx bx-plus me-1"></i> Add New User</button>
                                 </h5>
                                 <div class="table-responsive text-nowrap">
                                     <table class="table mb-3">
@@ -89,8 +90,9 @@
                             <div class="card">
                                 <h5 class="card-header d-flex justify-content-between">
                                     <div>User list</div>
-                                    <a class="btn btn-success" href=""><i class="bx bx-plus me-1"></i> Add New
-                                        User</a>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#modalLong" data-id="">
+                                        <i class="bx bx-plus me-1"></i> Add New User</button>
                                 </h5>
                                 <div class="table-responsive text-nowrap">
                                     <table class="table mb-3">
@@ -160,8 +162,9 @@
                                 <div class="card">
                                     <h5 class="card-header d-flex justify-content-between">
                                         <div>User list</div>
-                                        <a class="btn btn-success" href=""><i class="bx bx-plus me-1"></i> Add New
-                                            User</a>
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#modalLong" data-id="">
+                                            <i class="bx bx-plus me-1"></i> Add New User</button>
                                     </h5>
                                     <div class="table-responsive text-nowrap">
                                         <table class="table mb-3">
@@ -222,4 +225,93 @@
 
 
     </div>
+
+    {{-- .............................display add user modal..................................... --}}
+    <div class="modal fade" id="modalLong" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="{{ route('add.user') }}" method="POST" class="register-form" id="formAuthentication">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="modalFullTitle">Add User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">name</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                                name="name" placeholder="Enter your name" autofocus />
+                        </div>
+                        @error('name')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                id="email" name="email" placeholder="Enter your email" />
+                        </div>
+                        @error('name')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <div class="mb-3 form-password-toggle">
+                            <label class="form-label" for="password">Password</label>
+                            <div class="input-group input-group-merge">
+                                <input type="password" id="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                    aria-describedby="password" />
+                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                        </div>
+                        @error('password')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <div class="mb-3 form-password-toggle">
+                            <label class="form-label" for="password_confirmation">Confirm Password</label>
+                            <div class="input-group input-group-merge">
+                                <input type="password" id="password_confirmation"
+                                    class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"
+                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                    aria-describedby="password_confirmation" />
+                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                        </div>
+                        @error('name')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+            </form>
+        </div>
+    </div>
 @endsection
+@section('footer_script')
+        @if (session('user_add_success'))
+            <script>
+                const Toast = Swal.fire({
+                    icon: 'success',
+                    title: 'Congrats',
+                    text: '{{ session('user_add_success') }}',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+            </script>
+        @endif
+    @endsection

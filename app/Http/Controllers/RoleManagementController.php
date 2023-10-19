@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RoleManagementController extends Controller
 {
@@ -24,6 +25,25 @@ class RoleManagementController extends Controller
             'created_at' => now(),
         ]);
         return back();
+    }
+public function add_user(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+
+
+        User::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'created_at' => now(),
+        ]);
+
+        return back()->with('user_add_success', 'New user added successfully.');
     }
 
 }
