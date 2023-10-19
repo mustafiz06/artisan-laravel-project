@@ -136,6 +136,15 @@
                             </a>
                         </li>
                     @endif
+                    @if (auth()->user()->role != 'visitor')
+                        <li class="menu-item {{ \Request::route()->getName() == 'user' ? 'active' : '' }}">
+                            <a href="{{ route('user') }}" class="menu-link">
+                                <i class="menu-icon bx bx-user"></i>
+                                <div data-i18n="user">Manage User</div>
+                            </a>
+                        </li>
+                    @endif
+
                     <li class="menu-item {{ \Request::route()->getName() == 'category' ? 'active' : '' }}">
                         <a href="{{ route('category') }}" class="menu-link">
                             <i class="menu-icon bx bx-category"></i>

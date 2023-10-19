@@ -17,6 +17,14 @@ class RoleManagementController extends Controller
 
         return view('dashboard.role.index', compact('administrator_power','admin_power','co_admin_power'));
     }
+
+    public function user()
+    {
+        $users=User::all();
+        return view('dashboard.user.index', compact('users'));
+    }
+
+
     public function administration_role_edit(Request $request)
     {
 
