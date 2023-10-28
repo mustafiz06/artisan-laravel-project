@@ -43,6 +43,9 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->role }}</td>
                                                     <td>
+                                                        @if ($user->role == 'administration')
+                                                            <span>You can't change this role</span>
+                                                        @else
                                                         <form action="{{ route('administration.role.edit') }}"
                                                             method="POST">
                                                             @csrf
@@ -72,6 +75,7 @@
                                                                     style="border-radius: 10px,0px,0px,10px">Change</button>
                                                             </div>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

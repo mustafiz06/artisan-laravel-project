@@ -30,10 +30,10 @@
                                                 <th>Role</th>
 
                                                 @if (auth()->user()->role == 'author')
-                                                <td hidden></td>
+                                                    <td hidden></td>
                                                 @else
-                                                <th>Action</th>
-                                            @endif
+                                                    <th>Action</th>
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0">
@@ -49,36 +49,40 @@
 
 
                                                     @if (auth()->user()->role == 'administration')
-                                                        <td>
-                                                            <form action="{{ route('administration.role.edit') }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                <input type="text" name="user_id"
-                                                                    value="{{ $user->id }}" hidden>
-                                                                <div class="d-flex align-items-center">
-                                                                    <div class="my-3">
-                                                                        <select class="form-control" data-allow-clear="true"
-                                                                            name="role">
+                                                        @if ($user->role == 'administration')
+                                                            <span>You can't change this role</span>
+                                                        @else
+                                                            <td>
+                                                                <form action="{{ route('administration.role.edit') }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <input type="text" name="user_id"
+                                                                        value="{{ $user->id }}" hidden>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="my-3">
+                                                                            <select class="form-control"
+                                                                                data-allow-clear="true" name="role">
 
-                                                                            <option value="admin"
-                                                                                @if ($user->role == 'admin') {{ 'selected="selected"' }} @endif>
-                                                                                Admin </option>
-                                                                            <option value="co-admin"
-                                                                                @if ($user->role == 'co-admin') {{ 'selected="selected"' }} @endif>
-                                                                                Co-admin </option>
-                                                                            <option value="author"
-                                                                                @if ($user->role == 'author') {{ 'selected="selected"' }} @endif>
-                                                                                Author </option>
-                                                                            <option value="visitor"
-                                                                                @if ($user->role == 'visitor') {{ 'selected="selected"' }} @endif>
-                                                                                General user </option>
-                                                                        </select>
+                                                                                <option value="admin"
+                                                                                    @if ($user->role == 'admin') {{ 'selected="selected"' }} @endif>
+                                                                                    Admin </option>
+                                                                                <option value="co-admin"
+                                                                                    @if ($user->role == 'co-admin') {{ 'selected="selected"' }} @endif>
+                                                                                    Co-admin </option>
+                                                                                <option value="author"
+                                                                                    @if ($user->role == 'author') {{ 'selected="selected"' }} @endif>
+                                                                                    Author </option>
+                                                                                <option value="visitor"
+                                                                                    @if ($user->role == 'visitor') {{ 'selected="selected"' }} @endif>
+                                                                                    General user </option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-primary"
+                                                                            style="border-radius: 10px,0px,0px,10px">Change</button>
                                                                     </div>
-                                                                    <button type="submit" class="btn btn-primary"
-                                                                        style="border-radius: 10px,0px,0px,10px">Change</button>
-                                                                </div>
-                                                            </form>
-                                                        </td>
+                                                                </form>
+                                                            </td>
+                                                        @endif
                                                     @elseif (auth()->user()->role == 'admin')
                                                         <td>
                                                             <form action="{{ route('administration.role.edit') }}"
